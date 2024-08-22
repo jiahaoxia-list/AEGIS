@@ -45,4 +45,11 @@ code will be available soon...
 <div align="center"><img src="github/figure/cpr.png" alt="cpr" style="zoom:60%;" />Fig. 7. Angiography in regions with calcified and non-calcified plaques.</div>
 
 ## 2 examples shown in video
-<div align="center"><img src="github/figure/examples.gif" alt="process" style="zoom:60%;" /></div>
+<div align="center"><img src="github/figure/examples.gif" alt="example" style="zoom:60%;" /></div>
+
+## more results
+<div align="center"><img src="github/figure/Results-more.png" alt="rm" style="zoom:60%;" /></div>
+<div align="center"><img src="github/figure/coronary-more.png" alt="cm" style="zoom:60%;" /></div>
+<div align="center"><img src="github/figure/chamber-more.png" alt="chm" style="zoom:60%;" /></div>
+<div align="center"><img src="github/figure/cpr-more.png" alt="cpm" style="zoom:60%;" /></div>
+
