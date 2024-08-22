@@ -2,7 +2,7 @@
 [![GitHub Page](https://img.shields.io/badge/GitHub-Page-159957.svg)](https://github.com/jiahaoxia-list/AEGIS) 
 
 [//]: # ([![arXiv]&#40;https://img.shields.io/badge/arXiv-b31b1b.svg&#41;]&#40;https://arxiv.org/abs/xx&#41;)
-[![GitHub](https://img.shields.io/github/stars/934407831/AEGIS)](https://github.com/jiahaoxia-list/AEGIS)
+[![GitHub](https://img.shields.io/github/stars/jiahaoxia-list/AEGIS)](https://github.com/jiahaoxia-list/AEGIS)
 ## Paper
 paper will be available soon...
 ## Code
