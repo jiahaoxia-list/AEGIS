@@ -1,0 +1,61 @@
+Metadata-Version: 1.1
+Name: prefetch_generator
+Version: 1.0.3
+Summary: a simple tool to compute arbitrary generator in a background thread
+Home-page: https://github.com/justheuristic/prefetch_generator
+Author: UNKNOWN
+Author-email: justheuristic@gmail.com
+License: The Unlicense
+Description: 
+        Based on http://stackoverflow.com/questions/7323664/python-generator-pre-fetch
+        
+        This is a single-function package that makes it possible to transform any generator into a `BackgroundGenerator` which computes any number of elements from the generator ahead, in a background thread.
+        
+        It is quite lightweight, but not entirely weightless.
+        
+        The `BackgroundGenerator` is most useful when you have a GIL releasing task which might take a long time to complete (e.g. Disk I/O, Web Requests, pure C functions, GPU processing, ...), and another task which takes a similar amount of time, but is dependent on the results of the first task (e.g. Computationally intensive processing of data loaded from disk).
+        
+        Normally these two tasks will constantly wait for one another to finish. If you make one of these tasks a `BackgroundGenerator` (see examples below), they will work in parallel, potentially saving up to 50% of execution time (definitely less in practice).
+        
+        We personally use the `BackgroundGenerator` when iterating over minibatches of data for deep learning with tensorflow and theano ( lasagne, blocks, raw, etc.).
+        
+        Quick usage example (ipython notebook) - https://github.com/justheuristic/prefetch_generator/blob/master/example.ipynb
+        
+        This package contains two objects:
+         - The Class     `BackgroundGenerator(generator [,max_prefetch=1])`
+         - The decorator `@prefetch([max_prefetch=1])`
+        
+        the usage is either
+        
+        #for item in BackgroundGenerator(my_generator):
+        #    do_stuff(item)
+        
+        or
+        
+        #@prefetch()
+        #def my_generator(some_param):
+        #    while True:
+        #        X = read_heavy_file()
+        #        y = wget_from_cornhub()
+        #        do_pretty_much_anything(some_param)
+        #        yield X, y
+        
+        
+        More details are written in the `BackgroundGenerator` doc:
+        See `help(BackgroundGenerator)`
+        
+Keywords: background generator,prefetch generator,parallel generator,prefetch,background,deep learning,theano,tensorflow,lasagne,blocks
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Scientific/Engineering
+Classifier: License :: OSI Approved :: The Unlicense (Unlicense)
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
