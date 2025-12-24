@@ -10,9 +10,11 @@ import einops
 import config
 import os
 import SimpleITK as sitk
+#   Trained checkpoint
 #   训练好的ckpt
 resume_path = 'log_CADE/lightning_logs/version_{YOUR_VERSION}/checkpoints/{YOUR_CKPT}.ckpt'
 
+#   Load dataset used for test
 #   加载需要测试的数据集
 test_path = 'YOUR_DATSET_ROOT'
 
@@ -78,6 +80,7 @@ def inference(slice_, prompt, model, ddim, seed=-1, ddim_steps=10, num_samples=1
     return results
 
 if __name__ == '__main__':
+    #   If seed=0, then unify all noise additions; otherwise, randomly add between each layer
     #   如果seed=0那么就统一所有的噪声添加，否则就每一层之间随机
     seed = 0
     
@@ -91,7 +94,7 @@ if __name__ == '__main__':
             slice_z = []
             slice_x = []
             slice_y = []
-            # -----------------先对z分割-------------------
+            # -----------------先对z分割, first along z-axis-------------------
             for z_i in range(vol_shape[0]//batch_size):
                 slice_z_i = vol[z_i*batch_size: (z_i+1)*batch_size]
                 slice_z_i = np.repeat(np.expand_dims(slice_z_i, 3), 3, 3)
@@ -108,7 +111,7 @@ if __name__ == '__main__':
             sitk.WriteImage(sitk.GetImageFromArray(res_z), 'test.nii')
             np.save(z_path, res_z)
 
-            # -----------------再对x分割-------------------
+            # -----------------再对x分割, then along x-axis-------------------
             vol_x = np.transpose(vol, (1, 0, 2))
             for x_i in range(vol_shape[1]//batch_size):
                 slice_x_i = vol_x[x_i*batch_size:(x_i+1)*batch_size]
@@ -125,7 +128,7 @@ if __name__ == '__main__':
             x_path = '{}/res/{}/{}.npy'.format(test_path, filename, 'coronal')
             np.save(x_path, res_x)
             
-            # -----------------最后对y分割-------------------
+            # -----------------最后对y分割, finally, along y-axis-------------------
             vol_y = np.transpose(vol, (2, 0, 1))
             for y_i in range(vol_shape[2]//batch_size):
                 slice_y_i = vol_y[y_i*batch_size:(y_i+1)*batch_size]

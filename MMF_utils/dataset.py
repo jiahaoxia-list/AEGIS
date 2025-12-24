@@ -9,6 +9,7 @@ from MMF_utils.preprocess import ITK2Array
 
 def random_loader(dataset, batch_size, shuffle, train_ratio, val_ratio, random, dist_need, DataLoader=DataLoader, num_workers=4):
     '''
+        random split and can use distribution mode
         随机划分数据集，加入了分布式
     '''
     dataset_len = len(dataset)

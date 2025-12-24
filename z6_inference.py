@@ -116,7 +116,7 @@ def infer_CADE(vol, txt, model, ddim_sampler):
     slice_z = []
     slice_x = []
     slice_y = []
-# -----------------先对z分割-------------------
+# -----------------先对z分割, first along z-axis-------------------
     for z_i in range(vol_shape[0]//batch_size):
         slice_z_i = vol[z_i*batch_size: (z_i+1)*batch_size]
         slice_z_i = np.repeat(np.expand_dims(slice_z_i, 3), 3, 3)
@@ -129,7 +129,7 @@ def infer_CADE(vol, txt, model, ddim_sampler):
         slice_z.extend(processed_slice)
     res_z = np.stack(slice_z, axis=0)
 
-    # -----------------再对x分割-------------------
+    # -----------------再对x分割, then along x-axis-------------------
     vol_x = np.transpose(vol, (1, 0, 2))
     for x_i in range(vol_shape[1]//batch_size):
         slice_x_i = vol_x[x_i*batch_size:(x_i+1)*batch_size]
@@ -144,7 +144,7 @@ def infer_CADE(vol, txt, model, ddim_sampler):
     slice_x = np.stack(slice_x, axis=0)
     res_x = np.transpose(slice_x, (1, 0, 2))
     
-    # -----------------最后对y分割-------------------
+    # -----------------最后对y分割, finally, along y-axis-------------------
     vol_y = np.transpose(vol, (2, 0, 1))
     for y_i in range(vol_shape[2]//batch_size):
         slice_y_i = vol_y[y_i*batch_size:(y_i+1)*batch_size]

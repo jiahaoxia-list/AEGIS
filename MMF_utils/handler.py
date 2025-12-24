@@ -55,6 +55,7 @@ class InferenceForwardHandler(Handler):
         b, c, d, h, w = volume.shape
         assert b == 1
 
+        # sliding window for processing images
         # 滑动窗口处理图像
         predictions = torch.zeros((d, h, w), dtype=torch.float32, device=device)
         count_predictions = torch.zeros((d, h, w), dtype=torch.float32, device=device)
@@ -84,6 +85,7 @@ class InferenceForwardHandler(Handler):
                     k_end = k + window_size[2] if k + window_size[2] <= w else w
                     predictions[d-window_size[0]:i_end, j:j_end, k:k_end] += output[0][0]
                     count_predictions[d-window_size[0]:i_end, j:j_end, k:k_end] += 1
+        # Use averaging values for final predition
         # 取平均值作为最终的预测结果
         predictions = (predictions / count_predictions).type(torch.float32)
         return predictions.unsqueeze(0).unsqueeze(0)

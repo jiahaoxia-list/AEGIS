@@ -194,6 +194,7 @@ class SaveImage(Callback):
         self.save_path = cfg['save_path']
         self.spacing = cfg['spacing']
 
+        #   Mean and STD information can be calculated based on previous large-scale data and placed in this path for restoring the generated results
         #   可以根据以往的大规模下的mean和std数据放在这个路径，用于还原
         if not os.path.exists(self.save_path):
             os.mkdir(self.save_path)

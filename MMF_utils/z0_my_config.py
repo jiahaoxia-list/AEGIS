@@ -21,14 +21,11 @@ def detail_config(dist_need):
 
     config = dict()
     config['model'] = {
-        'name': 'UNet3D',
-        # 'name': 'RefineNet',
+        'name': 'RefineNet',
         'in_channels': 3,
-        # 'in_channels': 1,
         'out_channels': 1,
         'layer_order': 'gcr',
         'f_maps': [8, 16],
-        # 'f_maps': [16, 32, 64, 128],
         'num_groups': 8,
         'is_segmentation': False
     }

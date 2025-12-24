@@ -49,6 +49,12 @@ if __name__ == '__main__':
     torch.save(model.state_dict(), output_path)
     print('Done.')
     """
+    The purpose of this file is to initialize the model (Stable Diffusion) and obtain a copy of its Encoder, copying the initialization parameters over, which need:
+    (1) The configuration in CADE_utils/z2_my_cldm_v15.yaml
+    (2) In https://huggingface.co/runwayml/stable-diffusion-v1-5/blob/main/v1-5-pruned.ckpt, Download the pre trained model v1-5-prened.ckpt for Stable Diffusion in advance
+    (3) Run command python z0_my_tool_add_control.py {YOUR_PATH}/v1-5-pruned.ckpt CADE_utils/CADE_ini.ckpt， Obtain the initial model
+    
+    
     该文件的作用是初始化模型（Stable Diffusion），并且获取其Encoder的copy，将初始化参数复制过去
     需要：
     （1）CADE_utils/z2_my_cldm_v15.yaml里的配置文件

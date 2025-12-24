@@ -6,6 +6,9 @@ from torch.utils.data import Dataset
 
 def resize_image(img):
     """
+    When used for mixed training, data from different views can be placed in one batch, requiring all data to be of the same size
+    crop the transverse slice to a fixed size of 512 * 512 if it is too large , or pad it if it is too small
+
     用于混合训练时候，可以将不同角度的数据放在一个batch中，需要所有数据一样的大小
     以横截面切片512*512为固定大小，大就裁切，小就补全
     """
@@ -23,6 +26,7 @@ def resize_image(img):
 
 class MyDataset(Dataset):
     """
+    Data loading used during the training process
     训练过程用到的数据读取
     """
     def __init__(self, root_path):
@@ -80,6 +84,8 @@ class MyDataset(Dataset):
 
 class MyDatasetInf():
     """
+    Data loading during inference
+    The folder format is:
     推理时候的数据读取
     文件夹格式为：
     |--root

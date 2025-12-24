@@ -22,10 +22,12 @@ trainer_config = config['trainer']
 optimizer_config = config['optimizer']
 metric_config = config['metric']
 
+#   Set path for saving logs and checkpoints
 #   设置存储日志、断点的路径
 set_base_path(trainer_config['log_path'])
 set_namespace(trainer_config['train_namespace'])
 
+#   Load dataset and initialize model
 #   导入数据集，初始化模型
 train_d, val_d, test_d = data_deal(dataset_config, dist_need=dist_need)
 
@@ -34,12 +36,14 @@ metric = GeneratorMetric(metric_config)
 loss = get_loss_criterion(config)
 callback = MyCallback(1, metric_config['save_by'], dist_need=dist_need, checkpoint_name='checkpoint_last.pth')
 
+#   Load pretrained model if exists
 #   如果有断点存在，导入网络参数文件
 ckpt_path = trainer_config['log_path']+'train/checkpoint/PSNR_MAX.pth'
 if os.path.exists(ckpt_path):
     ckpt = torch.load(ckpt_path)
     from collections import OrderedDict
     n_ckpt = OrderedDict()
+    #   Update here if names of module mismatch with checkpoint
     #   如果出现模块名字不匹配，自行修改
     for k, v in ckpt.items():
         if k[:7] == 'module.':

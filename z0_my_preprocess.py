@@ -5,6 +5,7 @@ import SimpleITK as sitk
 from tqdm import tqdm
     
 '''
+    Before running this code for training, registration must be done first!
     在运行该代码用于训练前，必须先配准！
 '''
 def save_NIFTI_from_array(arr, filename, save_path, pos):
@@ -175,19 +176,24 @@ def generate_prompt(folder_path):
 if __name__ == '__main__':
     
     root_path = 'YOUR_DATASET_ROOT'
+    # Obtain transverse slices from raw data
     # 从原始数据中获取横截面切片
     get_slice_from(root_path, 0)
     generate_prompt('{}/slice_0'.format(root_path))
+    # Obtain sagittal slices from raw data
     # 从原始数据中获取矢状面切片
     get_slice_from(root_path, 1)
     generate_prompt('{}/slice_1'.format(root_path))
+    # Obtain coronal slices from raw data
     # 从原始数据中获取冠状面切片
     get_slice_from(root_path, 2)
     generate_prompt('{}/slice_2'.format(root_path))                        
     # get_norm(root_path)  
     
     """
+        The purpose of this file is to process the original 3D dataset into a 2D slice dataset that can be computed by CADE, and save it in npy format to improve IO efficiency
         该文件的作用是将原始的3D数据集处理成CADE部分可以计算的2D切片数据集，并且用npy格式保存，以提高IO效率
+        Original folder format:
         原始文件夹格式：
         |--root
         |   |--ct
@@ -198,8 +204,10 @@ if __name__ == '__main__':
         |   |   |--image
         |   |       |--VOL A.nii
         |   |       |--VOL B.nii
+        So the path input to get_slice_from should be the root path
         所以输入到get_slice_from的路径应该是root的路径
         
+        The format of the processed folder z0_my_preprocess.py is:
         z0_my_preprocess.py处理后的文件夹格式为：
         |--root
         |   |--ct
