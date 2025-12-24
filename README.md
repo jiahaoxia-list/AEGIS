@@ -7,8 +7,12 @@
 📄 **Paper**: https://ieeexplore.ieee.org/document/11296873/
 
 ![GIF](doc/result.gif)
-***Note: CCT means Coronary CT, which is a kind of non-contrast CT without using angiography technology.***
-<video src="doc/process.mp4" controls width="800"></video>
+
+***Note: CCT means Coronary CT, which is a kind of non-contrast CT without using angiography technology.*** 
+
+![process](doc/process.gif)
+
+***Note: The process can be found in `doc/process.mp4`.*** 
 
   
 This repository is the **official implementation** of the paper *AEGIS: Using Conditional Multi-View Diffusion Model to Achieve Angiographic Enhancement in Non-contrast CT*.  
