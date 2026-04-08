@@ -37,7 +37,7 @@ cd AEGIS
 
 ### 1.2 Create environment
 
-* Python version: **>= 3.8.5**
+* Python version: **>= 3.9.18**
 * Create a conda environment named `AEGIS` according to `requirements.txt`
 
 ```bash
