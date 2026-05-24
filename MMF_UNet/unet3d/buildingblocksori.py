@@ -452,20 +452,20 @@ def create_decoders(f_maps, basic_module, conv_kernel_size, conv_padding, layer_
     reversed_f_maps = list(reversed(f_maps))
     length = len(reversed_f_maps) - 1 if name != 'RefineNet' else len(reversed_f_maps)
     for i in range(length):
-        if basic_module == DoubleConv and upsample != 'deconv':
-            in_feature_num = reversed_f_maps[i] + reversed_f_maps[i + 1]
-        else:
-            in_feature_num = reversed_f_maps[i]
-
-        out_feature_num = reversed_f_maps[i + 1]
-        # if basic_module == DoubleConv and name != 'RefineNet':
+        # if basic_module == DoubleConv and upsample != 'deconv':
         #     in_feature_num = reversed_f_maps[i] + reversed_f_maps[i + 1]
         # else:
         #     in_feature_num = reversed_f_maps[i]
-        # if i != length - 1:
-        #     out_feature_num = reversed_f_maps[i + 1]
-        # else:
-        #     out_feature_num = reversed_f_maps[i]
+
+        # out_feature_num = reversed_f_maps[i + 1]
+        if basic_module == DoubleConv and name != 'RefineNet':
+            in_feature_num = reversed_f_maps[i] + reversed_f_maps[i + 1]
+        else:
+            in_feature_num = reversed_f_maps[i]
+        if i != length - 1:
+            out_feature_num = reversed_f_maps[i + 1]
+        else:
+            out_feature_num = reversed_f_maps[i]
             
         decoder = Decoder(in_feature_num, out_feature_num,
                           basic_module=basic_module,
