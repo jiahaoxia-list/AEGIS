@@ -68,6 +68,8 @@ The pretrained checkpoint can be downloaded from **[Huggingface](https://hugging
 
 Place the checkpoint in the appropriate directory as specified in the code.
 
+You can also find sample data here **[Google Drive](https://drive.google.com/file/d/11Rw9HEPPhstl_AKyFIyn3R9NA0ZHzGqS/view?usp=drive_link)**
+
 ### 2.2 CLIP model note (for users in mainland China)
 
 If you encounter download issues for
