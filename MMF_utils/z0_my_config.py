@@ -59,8 +59,8 @@ def detail_config(dist_need):
         'batch_size': 4,
         'shuffle': True,
         'slice': True,
-        'patch_size': (64, 512, 512),
-        'stride_size': (64, 512, 512),
+        'patch_size': (128, 512, 512),
+        'stride_size': (32, 512, 512),
         'split_ratio': (0.7, 0.1, 0.2),
         'cache_num': 4
     }
