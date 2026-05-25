@@ -296,12 +296,11 @@ If you find this work useful, please cite:
   author={Xia, Jiahao and Zhang, Xiaolei and He, Yuting and Qi, Yaolei and Hu, Yutao and Haigron, Pascal and Tang, Chunxiang and Zhang, Longjiang and Yang, Guanyu},
   journal={IEEE Transactions on Circuits and Systems for Video Technology}, 
   title={AEGIS: Using Conditional Multi-View Diffusion Model to Achieve Angiographic Enhancement in Non-Contrast CT}, 
-  year={2025},
-  volume={},
-  number={},
-  pages={1-1},
+  year={2026},
+  volume={36},
+  number={5},
+  pages={6586-6600},
   keywords={Artificial intelligence;Angiography;Diffusion models;Contrast agents;Computed tomography;Three-dimensional displays;Biomedical imaging;Feature extraction;Image segmentation;Chemicals;Conditional diffusion model;AI-generated content;contrast agent free;3D angiographic enhancement},
-  doi={10.1109/TCSVT.2025.3642730}
-}
+  doi={10.1109/TCSVT.2025.3642730}}
 ```
 
